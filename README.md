@@ -34,16 +34,16 @@ A lightweight, efficient, and portable command-line task manager built in C. Thi
 
 ```bash
 # Add a new task
-./todo add "Finish the project documentation"
+./build/todo add "Finish the project documentation"
 
 # List all tasks
-./todo list
+./build/todo list
 
 # Mark a task as complete (using its ID)
-./todo done 1
+./build/todo done 1
 
 # Delete a task
-./todo delete 1
+./build/todo delete 1
 ```
 
 ## Project Structure

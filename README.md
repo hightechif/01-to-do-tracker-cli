@@ -8,7 +8,8 @@ A lightweight, efficient, and portable command-line task manager built in C. Thi
 - **List Tasks**: View all your tasks with their current status.
 - **Mark Complete**: Easily toggle tasks between pending and completed.
 - **Delete Tasks**: Remove tasks from your list permanently.
-- **Persistence**: Automatically saves your tasks to a local file, ensuring your data is safe between sessions.
+- **Persistence**: Automatically saves your tasks to `tasks.txt`.
+- **Automated Testing**: Includes a built-in unit test suite for verifying core logic.
 
 ## Quick Start
 
@@ -17,7 +18,7 @@ A lightweight, efficient, and portable command-line task manager built in C. Thi
 - A C compiler (e.g., `gcc` or `clang`)
 - `make` build tool
 
-### Installation
+### Installation & Build
 
 1. Clone the repository:
    ```bash
@@ -30,27 +31,42 @@ A lightweight, efficient, and portable command-line task manager built in C. Thi
    make
    ```
 
+### Running Tests
+
+To verify the application logic, run the automated tests:
+```bash
+make test
+```
+
 ### Usage
+
+The executable is located in the `out/` directory.
 
 ```bash
 # Add a new task
-./build/todo add "Finish the project documentation"
+./out/todo add "Finish the project documentation"
 
 # List all tasks
-./build/todo list
+./out/todo list
 
 # Mark a task as complete (using its ID)
-./build/todo done 1
+./out/todo done 1
 
 # Delete a task
-./build/todo delete 1
+./out/todo delete 1
 ```
 
 ## Project Structure
 
-- `src/`: Source files (`.c`)
-- `include/`: Header files (`.h`)
-- `build/`: Compiled object files and binaries (ignored by git)
+- `src/`: Core implementation files (`task.c`, `storage.c`, `main.c`).
+- `include/`: API definitions and header files.
+- `tests/`: Unit tests and a custom lightweight test harness.
+- `out/`: Compiled binaries and test runners (ignored by git).
+- `openspec/`: Project specifications and change history.
+
+## Development
+
+The project uses a custom Makefile that automatically handles build dependencies and includes a dedicated testing target. It is designed to be compatible with restricted environments (like macOS sandbox) by using `/tmp` for intermediate compilation files.
 
 ## License
 

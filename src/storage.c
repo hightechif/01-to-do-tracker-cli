@@ -3,8 +3,8 @@
 #include <string.h>
 #include "storage.h"
 
-int storage_save(const TaskList *list) {
-    FILE *file = fopen(STORAGE_FILE, "w");
+int storage_save(const TaskList *list, const char *filename) {
+    FILE *file = fopen(filename, "w");
     if (!file) {
         perror("Error opening storage file for writing");
         return -1;
@@ -21,8 +21,8 @@ int storage_save(const TaskList *list) {
     return 0;
 }
 
-int storage_load(TaskList *list) {
-    FILE *file = fopen(STORAGE_FILE, "r");
+int storage_load(TaskList *list, const char *filename) {
+    FILE *file = fopen(filename, "r");
     if (!file) return 0; // Not an error, just no tasks yet
     
     char line[512];

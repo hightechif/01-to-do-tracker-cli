@@ -17,7 +17,7 @@ void print_usage() {
 int main(int argc, char *argv[]) {
     TaskList list;
     task_init(&list);
-    storage_load(&list);
+    storage_load(&list, DEFAULT_STORAGE_FILE);
 
     if (argc < 2) {
         print_usage();
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
         }
         int id = task_add(&list, argv[2]);
         if (id != -1) {
-            storage_save(&list);
+            storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task added with ID: %d\n", id);
         } else {
             printf("Error: Could not add task.\n");
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
         }
         int id = atoi(argv[2]);
         if (task_toggle(&list, id) == 0) {
-            storage_save(&list);
+            storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task %d updated.\n", id);
         } else {
             printf("Error: Task %d not found.\n", id);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
         }
         int id = atoi(argv[2]);
         if (task_delete(&list, id) == 0) {
-            storage_save(&list);
+            storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task %d deleted.\n", id);
         } else {
             printf("Error: Task %d not found.\n", id);

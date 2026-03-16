@@ -3,9 +3,9 @@
 
 #include "task.h"
 
-#define STORAGE_FILE "tasks.txt"
+#define DEFAULT_STORAGE_FILE "tasks.txt"
 
-int storage_save(const TaskList *list);
-int storage_load(TaskList *list);
+int storage_save(const TaskList *list, const char *filename);
+int storage_load(TaskList *list, const char *filename);
 
 #endif

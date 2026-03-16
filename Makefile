@@ -1,20 +1,28 @@
 CC = gcc
 CFLAGS = -Wall -Iinclude
-SRC = $(wildcard src/*.c)
-BUILD_DIR = build
-OBJ = $(addprefix $(BUILD_DIR)/, $(notdir $(SRC:.c=.o)))
-TARGET = $(BUILD_DIR)/todo
+SRC = src/task.c src/storage.c
+MAIN_SRC = src/main.c
+TEST_SRC = $(wildcard tests/*.c)
+BIN_DIR = out
+TARGET = $(BIN_DIR)/todo
+TEST_TARGET = $(BIN_DIR)/test_runner
 
-all: $(BUILD_DIR) $(TARGET)
+# Fix for restricted environments (macOS Documents folder / Sandbox)
+# Force TMPDIR to /tmp to allow clang to create temporary files
+# and specify BIN_DIR as 'out' to avoid 'Operation not permitted' on 'build/' or 'bin/'
+COMPILER = TMPDIR=/tmp $(CC)
 
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+all: $(BIN_DIR) $(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
-$(BUILD_DIR)/%.o: src/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(TARGET): $(SRC) $(MAIN_SRC) | $(BIN_DIR)
+	$(COMPILER) $(CFLAGS) $(SRC) $(MAIN_SRC) -o $(TARGET)
+
+test: $(BIN_DIR) $(SRC) $(TEST_SRC)
+	$(COMPILER) $(CFLAGS) $(SRC) $(TEST_SRC) -o $(TEST_TARGET)
+	./$(TEST_TARGET)
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf $(BIN_DIR)

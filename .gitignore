@@ -41,6 +41,13 @@
 build/
 bin/
 obj/
+out/
+
+# Test artifacts
+test_tasks.txt
+*.bc
+*.i
+*.s
 
 # Local data files (Task storage)
 tasks.txt

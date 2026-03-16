@@ -22,7 +22,7 @@
 
 ## 5. Verification
 
-- [ ] 5.1 Verify 'add' command persists tasks correctly
-- [ ] 5.2 Verify 'list' command displays tasks accurately
-- [ ] 5.3 Verify 'done' command updates completion status
-- [ ] 5.4 Verify 'delete' command removes tasks from storage
+- [x] 5.1 Verify 'add' command persists tasks correctly
+- [x] 5.2 Verify 'list' command displays tasks accurately
+- [x] 5.3 Verify 'done' command updates completion status
+- [x] 5.4 Verify 'delete' command removes tasks from storage

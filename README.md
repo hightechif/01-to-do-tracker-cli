@@ -40,20 +40,20 @@ make test
 
 ### Usage
 
-The executable is located in the `out/` directory.
+The executable is located in the `dist/` directory.
 
 ```bash
 # Add a new task
-./out/todo add "Finish the project documentation"
+./dist/todo add "Finish the project documentation"
 
 # List all tasks
-./out/todo list
+./dist/todo list
 
 # Mark a task as complete (using its ID)
-./out/todo done 1
+./dist/todo done 1
 
 # Delete a task
-./out/todo delete 1
+./dist/todo delete 1
 ```
 
 ## Project Structure
@@ -61,7 +61,7 @@ The executable is located in the `out/` directory.
 - `src/`: Core implementation files (`task.c`, `storage.c`, `main.c`).
 - `include/`: API definitions and header files.
 - `tests/`: Unit tests and a custom lightweight test harness.
-- `out/`: Compiled binaries and test runners (ignored by git).
+- `dist/`: Compiled binaries and test runners (ignored by git).
 - `openspec/`: Project specifications and change history.
 
 ## Development

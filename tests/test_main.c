@@ -11,6 +11,7 @@ i32 tests_failed = 0;
 void test_task_add();
 void test_task_delete();
 void test_task_toggle();
+void test_task_id_uniqueness();
 void test_storage_save_load();
 
 i32 main() {
@@ -20,6 +21,7 @@ i32 main() {
     RUN_TEST(test_task_add);
     RUN_TEST(test_task_delete);
     RUN_TEST(test_task_toggle);
+    RUN_TEST(test_task_id_uniqueness);
     RUN_TEST(test_storage_save_load);
 
     printf("--------------------\n");

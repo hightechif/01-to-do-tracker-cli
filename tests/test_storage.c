@@ -5,7 +5,7 @@
 #include "type.h"
 #include "test_harness.h"
 
-#define TEST_FILE "test_tasks.txt"
+#define TEST_FILE "/tmp/test_tasks.txt"
 
 void test_storage_save_load() {
     TaskList list;

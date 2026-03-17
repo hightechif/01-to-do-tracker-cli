@@ -4,6 +4,7 @@
 
 void task_init(TaskList *list) {
     list->count = 0;
+    list->last_id = 0;
 }
 
 i32 task_add(TaskList *list, const char *description) {
@@ -12,7 +13,8 @@ i32 task_add(TaskList *list, const char *description) {
     }
     
     Task *new_task = &list->tasks[list->count];
-    new_task->id = list->count + 1; // Simple ID assignment
+    list->last_id++;
+    new_task->id = list->last_id;
     new_task->is_completed = 0;
     strncpy(new_task->description, description, MAX_DESC - 1);
     new_task->description[MAX_DESC - 1] = '\0';

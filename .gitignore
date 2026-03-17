@@ -42,6 +42,7 @@ build/
 bin/
 obj/
 out/
+dist/
 
 # Test artifacts
 test_tasks.txt

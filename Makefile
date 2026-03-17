@@ -3,7 +3,7 @@ CFLAGS = -Wall -Iinclude
 SRC = src/task.c src/storage.c
 MAIN_SRC = src/main.c
 TEST_SRC = $(wildcard tests/*.c)
-BIN_DIR = out
+BIN_DIR = dist
 TARGET = $(BIN_DIR)/todo
 TEST_TARGET = $(BIN_DIR)/test_runner
 

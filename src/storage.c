@@ -9,6 +9,8 @@ i32 storage_save(const TaskList *list, const char *filename) {
         perror("Error opening storage file for writing");
         return -1;
     }
+
+    fprintf(file, "# LAST_ID:%d\n", list->last_id);
     
     for (i32 i = 0; i < list->count; i++) {
         fprintf(file, "%d|%d|%s\n", 
@@ -27,7 +29,16 @@ i32 storage_load(TaskList *list, const char *filename) {
     
     char line[512];
     list->count = 0;
+    list->last_id = 0;
+
     while (fgets(line, sizeof(line), file) && list->count < MAX_TASKS) {
+        if (line[0] == '#') {
+            if (sscanf(line, "# LAST_ID:%d", &list->last_id) == 1) {
+                continue;
+            }
+            continue; // Skip other comments
+        }
+
         Task *t = &list->tasks[list->count];
         char *id_str = strtok(line, "|");
         char *status_str = strtok(NULL, "|");
@@ -38,6 +49,12 @@ i32 storage_load(TaskList *list, const char *filename) {
             t->is_completed = atoi(status_str);
             strncpy(t->description, desc_str, MAX_DESC - 1);
             t->description[MAX_DESC - 1] = '\0';
+            
+            // Fallback: Ensure last_id is at least the max ID found
+            if (t->id > list->last_id) {
+                list->last_id = t->id;
+            }
+            
             list->count++;
         }
     }

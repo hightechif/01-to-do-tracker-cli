@@ -15,6 +15,7 @@ typedef struct {
 typedef struct {
     Task tasks[MAX_TASKS];
     i32 count;
+    i32 last_id;
 } TaskList;
 
 void task_init(TaskList *list);

@@ -47,3 +47,19 @@ void test_task_toggle() {
     task_toggle(&list, 1);
     ASSERT("Should be back to not completed", list.tasks[0].is_completed == 0);
 }
+
+void test_task_id_uniqueness() {
+    TaskList list;
+    task_init(&list);
+    
+    i32 id1 = task_add(&list, "First Task");
+    i32 id2 = task_add(&list, "Second Task");
+    ASSERT("ID 1 should be 1", id1 == 1);
+    ASSERT("ID 2 should be 2", id2 == 2);
+    
+    task_delete(&list, 1);
+    ASSERT("Count should be 1 after delete", list.count == 1);
+    
+    i32 id3 = task_add(&list, "Third Task");
+    ASSERT("ID 3 should be 3, not 2 (bug fix verification)", id3 == 3);
+}

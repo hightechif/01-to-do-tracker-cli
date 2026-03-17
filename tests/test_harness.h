@@ -2,9 +2,10 @@
 #define TEST_HARNESS_H
 
 #include <stdio.h>
+#include "type.h"
 
-extern int tests_run;
-extern int tests_failed;
+extern i32 tests_run;
+extern i32 tests_failed;
 
 #define ASSERT(message, test) do { \
     tests_run++; \

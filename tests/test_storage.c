@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include "storage.h"
+#include "type.h"
 #include "test_harness.h"
 
 #define TEST_FILE "test_tasks.txt"
@@ -12,7 +13,7 @@ void test_storage_save_load() {
     task_add(&list, "Save me");
     task_add(&list, "Me too");
     
-    int res = storage_save(&list, TEST_FILE);
+    i32 res = storage_save(&list, TEST_FILE);
     ASSERT("Storage save should succeed", res == 0);
     
     TaskList loaded_list;

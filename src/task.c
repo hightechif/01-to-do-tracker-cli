@@ -6,7 +6,7 @@ void task_init(TaskList *list) {
     list->count = 0;
 }
 
-int task_add(TaskList *list, const char *description) {
+i32 task_add(TaskList *list, const char *description) {
     if (list->count >= MAX_TASKS) {
         return -1;
     }
@@ -21,9 +21,9 @@ int task_add(TaskList *list, const char *description) {
     return new_task->id;
 }
 
-int task_delete(TaskList *list, int id) {
-    int found_index = -1;
-    for (int i = 0; i < list->count; i++) {
+i32 task_delete(TaskList *list, i32 id) {
+    i32 found_index = -1;
+    for (i32 i = 0; i < list->count; i++) {
         if (list->tasks[i].id == id) {
             found_index = i;
             break;
@@ -33,7 +33,7 @@ int task_delete(TaskList *list, int id) {
     if (found_index == -1) return -1;
     
     // Shift remaining tasks
-    for (int i = found_index; i < list->count - 1; i++) {
+    for (i32 i = found_index; i < list->count - 1; i++) {
         list->tasks[i] = list->tasks[i + 1];
     }
     
@@ -41,8 +41,8 @@ int task_delete(TaskList *list, int id) {
     return 0;
 }
 
-int task_toggle(TaskList *list, int id) {
-    for (int i = 0; i < list->count; i++) {
+i32 task_toggle(TaskList *list, i32 id) {
+    for (i32 i = 0; i < list->count; i++) {
         if (list->tasks[i].id == id) {
             list->tasks[i].is_completed = !list->tasks[i].is_completed;
             return 0;
@@ -59,7 +59,7 @@ void task_list_print(const TaskList *list) {
     
     printf("%-4s %-10s %s\n", "ID", "Status", "Description");
     printf("-------------------------------\n");
-    for (int i = 0; i < list->count; i++) {
+    for (i32 i = 0; i < list->count; i++) {
         printf("%-4d %-10s %s\n", 
                list->tasks[i].id, 
                list->tasks[i].is_completed ? "[X]" : "[ ]", 

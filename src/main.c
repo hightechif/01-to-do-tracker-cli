@@ -3,6 +3,7 @@
 #include <string.h>
 #include "task.h"
 #include "storage.h"
+#include "type.h"
 
 void print_usage() {
     printf("To-Do Tracker CLI\n");
@@ -14,7 +15,7 @@ void print_usage() {
     printf("  todo help               - Show this help message\n");
 }
 
-int main(int argc, char *argv[]) {
+i32 main(i32 argc, char *argv[]) {
     TaskList list;
     task_init(&list);
     storage_load(&list, DEFAULT_STORAGE_FILE);
@@ -31,7 +32,7 @@ int main(int argc, char *argv[]) {
             printf("Error: Missing description for 'add' command.\n");
             return 1;
         }
-        int id = task_add(&list, argv[2]);
+        i32 id = task_add(&list, argv[2]);
         if (id != -1) {
             storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task added with ID: %d\n", id);
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]) {
             printf("Error: Missing ID for 'done' command.\n");
             return 1;
         }
-        int id = atoi(argv[2]);
+        i32 id = atoi(argv[2]);
         if (task_toggle(&list, id) == 0) {
             storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task %d updated.\n", id);
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]) {
             printf("Error: Missing ID for 'delete' command.\n");
             return 1;
         }
-        int id = atoi(argv[2]);
+        i32 id = atoi(argv[2]);
         if (task_delete(&list, id) == 0) {
             storage_save(&list, DEFAULT_STORAGE_FILE);
             printf("Task %d deleted.\n", id);

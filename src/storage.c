@@ -3,14 +3,14 @@
 #include <string.h>
 #include "storage.h"
 
-int storage_save(const TaskList *list, const char *filename) {
+i32 storage_save(const TaskList *list, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (!file) {
         perror("Error opening storage file for writing");
         return -1;
     }
     
-    for (int i = 0; i < list->count; i++) {
+    for (i32 i = 0; i < list->count; i++) {
         fprintf(file, "%d|%d|%s\n", 
                 list->tasks[i].id, 
                 list->tasks[i].is_completed, 
@@ -21,7 +21,7 @@ int storage_save(const TaskList *list, const char *filename) {
     return 0;
 }
 
-int storage_load(TaskList *list, const char *filename) {
+i32 storage_load(TaskList *list, const char *filename) {
     FILE *file = fopen(filename, "r");
     if (!file) return 0; // Not an error, just no tasks yet
     

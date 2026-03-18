@@ -13,6 +13,7 @@ void test_task_delete();
 void test_task_toggle();
 void test_task_id_uniqueness();
 void test_storage_save_load();
+void test_storage_migration();
 
 i32 main() {
     printf("Starting Unit Tests...\n");
@@ -23,6 +24,7 @@ i32 main() {
     RUN_TEST(test_task_toggle);
     RUN_TEST(test_task_id_uniqueness);
     RUN_TEST(test_storage_save_load);
+    RUN_TEST(test_storage_migration);
 
     printf("--------------------\n");
     printf("Summary: %d tests run, %d failed.\n", tests_run, tests_failed);

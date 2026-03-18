@@ -18,7 +18,7 @@ The project currently only has manual verification through the CLI. To maintain 
 
 - **Framework**: Use a simple macro-based harness (defined in `tests/test_harness.h`) to minimize external dependencies.
 - **Organization**: Create a `tests/` directory. Each source file will have a corresponding test file (e.g., `tests/test_task.c`).
-- **Data Isolation**: Persistence tests will use a separate filename (e.g., `test_tasks.txt`) to avoid corrupting the user's actual task data.
+- **Data Isolation**: Persistence tests will use a separate filename (e.g., `test_tasks.json`) to avoid corrupting the user's actual task data.
 - **Reporting**: The test runner will print the file and line number of any failure to allow easy debugging.
 
 ## Risks / Trade-offs

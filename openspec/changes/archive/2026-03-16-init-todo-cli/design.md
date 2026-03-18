@@ -20,7 +20,7 @@ The project is a new C-based command-line utility for task management. There is 
 
 - **Architecture**: Monolithic but modular approach. Separate files for task logic (`task.c/h`), persistence (`storage.c/h`), and the main CLI driver (`main.c`).
 - **Data Structure**: An array of `Task` structs. Each struct will contain an `i32 id`, `b8 is_completed`, and `char description[256]`.
-- **Persistence Layer**: A human-readable text file (e.g., `tasks.txt`). Format: `ID|STATUS|DESCRIPTION`. This choice simplifies debugging and allows users to manually edit the file if necessary.
+- **Persistence Layer**: A human-readable text file (e.g., `tasks.json`). Format: `ID|STATUS|DESCRIPTION`. This choice simplifies debugging and allows users to manually edit the file if necessary.
 - **CLI Parsing**: Manual parsing of `argc` and `argv` for the initial version to keep dependencies minimal.
 - **Build System**: Makefile for standard compilation and cleanup tasks.
 

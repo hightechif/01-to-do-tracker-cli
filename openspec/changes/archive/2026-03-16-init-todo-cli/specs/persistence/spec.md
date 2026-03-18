@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Data Persistence to File
-The system SHALL save the state of the task list to a local file (e.g., `tasks.txt` or `tasks.dat`) to ensure data is preserved between executions.
+The system SHALL save the state of the task list to a local file (e.g., `tasks.json` or `tasks.dat`) to ensure data is preserved between executions.
 
 #### Scenario: Saving tasks after modification
 - **WHEN** a task is added, deleted, or updated

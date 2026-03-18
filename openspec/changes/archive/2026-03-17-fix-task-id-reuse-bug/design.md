@@ -7,7 +7,7 @@ The to-do tracker CLI currently uses a naive ID generation strategy: `new_id = l
 **Goals:**
 - Guarantee unique, monotonically increasing IDs for all tasks.
 - Persist the ID counter across application restarts.
-- Maintain backward compatibility with existing `tasks.txt` files where possible.
+- Maintain backward compatibility with existing `tasks.json` files where possible.
 - Provide unit tests to verify the fix and prevent regressions.
 
 **Non-Goals:**
@@ -18,7 +18,7 @@ The to-do tracker CLI currently uses a naive ID generation strategy: `new_id = l
 
 - **State Management**: Modify the `TaskList` structure in `include/task.h` to include a `last_id` field.
 - **ID Generation**: In `src/task.c`, update `task_add` to increment `list->last_id` and assign the new value to the task.
-- **File Format Update**: The `tasks.txt` file will now optionally include a metadata line at the top to store the `last_id`.
+- **File Format Update**: The `tasks.json` file will now optionally include a metadata line at the top to store the `last_id`.
     - Format: `# LAST_ID:<value>`
     - The `storage_load` function will be updated to parse this line if it exists.
     - If the metadata line is missing (old file format), `storage_load` will initialize `last_id` to the maximum ID found in the loaded tasks.
@@ -26,7 +26,7 @@ The to-do tracker CLI currently uses a naive ID generation strategy: `new_id = l
 
 ## Risks / Trade-offs
 
-- **Format Change**: Adding a header line to `tasks.txt` might confuse users who manually edit the file.
+- **Format Change**: Adding a header line to `tasks.json` might confuse users who manually edit the file.
     - *Mitigation*: Use a standard comment prefix (`#`) and keep the format human-readable.
 - **Header Parsing**: `storage_load` needs to be robust against malformed headers.
     - *Mitigation*: Use careful string parsing and fallback to scanning task IDs if the header is missing or invalid.

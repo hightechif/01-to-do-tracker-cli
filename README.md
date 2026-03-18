@@ -8,7 +8,7 @@ A lightweight, efficient, and portable command-line task manager built in C. Thi
 - **List Tasks**: View all your tasks with their current status.
 - **Mark Complete**: Easily toggle tasks between pending and completed.
 - **Delete Tasks**: Remove tasks from your list permanently.
-- **Persistence**: Automatically saves your tasks to `tasks.txt`.
+- **Persistence**: Automatically saves your tasks to `tasks.json`.
 - **Automated Testing**: Includes a built-in unit test suite for verifying core logic.
 
 ## Quick Start

@@ -9,7 +9,7 @@ TEST_TARGET = $(BIN_DIR)/test_runner
 
 # Fix for restricted environments (macOS Documents folder / Sandbox)
 # Force TMPDIR to /tmp to allow clang to create temporary files
-# and specify BIN_DIR as 'out' to avoid 'Operation not permitted' on 'build/' or 'bin/'
+# and specify BIN_DIR as 'dist' to avoid 'Operation not permitted' on 'build/' or 'bin/'
 COMPILER = TMPDIR=/tmp $(CC)
 
 all: $(BIN_DIR) $(TARGET)

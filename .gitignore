@@ -45,13 +45,13 @@ out/
 dist/
 
 # Test artifacts
-test_tasks.txt
+test_tasks.json
 *.bc
 *.i
 *.s
 
 # Local data files (Task storage)
-tasks.txt
+tasks.json
 tasks.dat
 
 # Agent internal data

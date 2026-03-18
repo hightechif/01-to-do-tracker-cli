@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Iinclude
-SRC = src/task.c src/storage.c
+SRC = src/task.c src/storage.c src/cJSON.c
+CFLAGS = -Wall -Iinclude -lm
 MAIN_SRC = src/main.c
 TEST_SRC = $(wildcard tests/*.c)
 BIN_DIR = dist
